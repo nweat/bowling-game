@@ -1,6 +1,3 @@
-import re
-
-
 class BowlingGame(object):
     STRIKE = 10
 
@@ -16,14 +13,10 @@ class BowlingGame(object):
 
     @staticmethod
     def _is_frame_valid(arr):
-        valid = False
         try:
-            for a in arr:
-                if int(str(a)) and a >= 1 and a <= 10:
-                    valid = True
+            return all(isinstance(a, int) for a in arr)
         except ValueError:
-            return valid
-        return valid
+            return False
 
     @staticmethod
     def _is_strike(frame):
@@ -58,7 +51,7 @@ class BowlingGame(object):
                         finalScores[index] = BowlingGame._get_sum(frame) + finalScores[index - 1]
 
                 else:
-                    print("Invalid values found in frame. Must be integers between 1 and 10.")
+                    print("Invalid values found in frame {}. Scores must be integers between 1 and 10".format(frame))
 
         else:
             print("Please enter an array of arrays containing 10 frames. This is a ten pin bowling game!")

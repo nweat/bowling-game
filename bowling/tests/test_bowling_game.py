@@ -2,11 +2,15 @@ from bowling.bowling_game import BowlingGame
 
 
 def test_is_frame_valid():
-    assert BowlingGame._is_frame_valid([5, 4.6]) == True
+    assert BowlingGame._is_frame_valid([5, 4]) == True
 
 
-def test_is_frame_invalid():
-    assert BowlingGame._is_frame_valid([5, "ferer"]) == False
+def test1_is_frame_invalid():
+    assert BowlingGame._is_frame_valid([5, 4.6]) == False
+
+
+def test2_is_frame_invalid():
+    assert BowlingGame._is_frame_valid([5, ""]) == False
 
 
 def test_is_number_of_frames_valid():
